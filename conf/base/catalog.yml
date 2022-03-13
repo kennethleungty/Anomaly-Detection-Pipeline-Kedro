@@ -39,6 +39,7 @@ ml_model:
   type: pickle.PickleDataSet
   filepath: data/06_models/ml_model.pkl
   backend: pickle
+  layer: models
 
 
 predictions:
