@@ -1,0 +1,5 @@
+# This is a boilerplate parameters config generated for pipeline 'data_engineering'
+# using Kedro 0.17.7.
+#
+# Documentation for this file format can be found in "Parameters"
+# Link: https://kedro.readthedocs.io/en/0.17.7/04_kedro_project_setup/02_configuration.html#parameters

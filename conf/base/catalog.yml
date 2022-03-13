@@ -1,4 +1,52 @@
-# Here you can define all your data sets by using simple YAML syntax.
-#
-# Documentation for this file format can be found in "The Data Catalog"
-# Link: https://kedro.readthedocs.io/en/stable/05_data/01_data_catalog.html
+raw_daily_data:
+  type: PartitionedDataSet
+  path: data/01_raw  # path to the location of partitions
+  dataset: pandas.CSVDataSet
+  layer: raw
+
+
+merged_data:
+  type: pandas.CSVDataSet
+  filepath: data/02_intermediate/merged_data.csv
+  layer: intermediate
+
+
+processed_data:
+  type: pandas.CSVDataSet
+  filepath: data/03_primary/processed_data.csv
+  layer: primary
+
+
+train_data:
+  type: pandas.CSVDataSet
+  filepath: data/05_model_input/train.csv
+  layer: model_input
+
+
+test_data:
+  type: pandas.CSVDataSet
+  filepath: data/05_model_input/test.csv
+  layer: model_input
+
+
+test_labels:
+  type: pandas.CSVDataSet
+  filepath: data/05_model_input/test_labels.csv
+  layer: model_input
+
+
+ml_model:
+  type: pickle.PickleDataSet
+  filepath: data/06_models/ml_model.pkl
+  backend: pickle
+
+
+predictions:
+  type: pandas.CSVDataSet
+  filepath: data/07_model_output/predictions.csv
+  layer: model_output
+
+
+evaluation_plot:
+  type: matplotlib.MatplotlibWriter
+  filepath: data/08_reporting/auc_plots.png
