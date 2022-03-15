@@ -33,10 +33,9 @@ def predict(ml_model, test_df: pd.DataFrame):
     # Convert anomaly scores to positive values
     anomaly_scores_mod = np.array([-x for x in anomaly_scores])
 
-    test_df_anomaly = test_df.copy()
-    test_df_anomaly['ANOMALY_SCORE'] = anomaly_scores_mod
-    test_df_anomaly['ANOMALY'] = preds_mod
+    test_df['ANOMALY_SCORE'] = anomaly_scores_mod
+    test_df['ANOMALY'] = preds_mod
 
-    return test_df_anomaly
+    return test_df
 
 

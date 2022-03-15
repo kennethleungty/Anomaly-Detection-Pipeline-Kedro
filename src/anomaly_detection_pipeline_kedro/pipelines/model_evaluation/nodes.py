@@ -6,8 +6,7 @@ generated using Kedro 0.17.7
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from sklearn.metrics import roc_curve, precision_recall_curve, f1_score, auc, roc_auc_score, confusion_matrix, accuracy_score
-
+from sklearn.metrics import roc_curve, precision_recall_curve, auc
 
 def evaluate_model(predictions: pd.DataFrame, test_labels: pd.DataFrame):
     def get_auc(labels, scores):
@@ -16,7 +15,7 @@ def evaluate_model(predictions: pd.DataFrame, test_labels: pd.DataFrame):
         return fpr, tpr, auc_score
 
     def get_aucpr(labels, scores):
-        precision, recall, th = precision_recall_curve(labels, scores)
+        precision, recall, thr = precision_recall_curve(labels, scores)
         aucpr_score = np.trapz(recall, precision)
         return precision, recall, aucpr_score
 
@@ -49,13 +48,9 @@ def evaluate_model(predictions: pd.DataFrame, test_labels: pd.DataFrame):
         plt.show()
         return axes
 
-    test_labels_array = test_labels['TX_FRAUD'].values
-    anomaly_scores = predictions['ANOMALY_SCORE'].values
+    fig = plt.figure()
+    fig.set_figheight(4.5)
+    fig.set_figwidth(4.5*2)
+    axes = prediction_summary(test_labels['TX_FRAUD'].values, predictions['ANOMALY_SCORE'].values, "Isolation Forest")
 
-    fig_size = 4.5
-    f = plt.figure()
-    f.set_figheight(fig_size)
-    f.set_figwidth(fig_size*2)
-    axes = prediction_summary(test_labels_array, anomaly_scores, "Isolation Forest")
-
-    return f
+    return fig
