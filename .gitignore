@@ -160,3 +160,6 @@ venv.bak/
 
 # Ignore media files
 media/
+
+# Ignore all notebooks
+*.ipynb
