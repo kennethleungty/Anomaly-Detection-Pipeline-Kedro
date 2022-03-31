@@ -11,7 +11,7 @@ import logging
 import neptune.new as neptune
 
 run = neptune.init(project='kennethleung.ty/Anomaly-Detection-Pipeline-Kedro',
-                   api_token='eyJhcGlfYWRkcmVzcyI6Imh0dHBzOi8vYXBwLm5lcHR1bmUuYWkiLCJhcGlfdXJsIjoiaHR0cHM6Ly9hcHAubmVwdHVuZS5haSIsImFwaV9rZXkiOiI1N2NhNzk0NC0wZWZlLTQyMTktYjBlYS1kOGViYTlkNTA5YjkifQ==')
+                   api_token='<API_TOKEN>')
 
 def evaluate_model(predictions: pd.DataFrame, test_labels: pd.DataFrame,
                    neptune_run: run):
