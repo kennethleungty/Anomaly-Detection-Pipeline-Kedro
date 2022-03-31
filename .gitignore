@@ -142,6 +142,9 @@ celerybeat-schedule
 # SageMath parsed files
 *.sage.py
 
+# Neptune logs
+.neptune
+
 # Environments
 .env
 .envrc
