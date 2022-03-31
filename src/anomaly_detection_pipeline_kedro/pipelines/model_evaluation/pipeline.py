@@ -11,7 +11,7 @@ def create_pipeline(**kwargs) -> Pipeline:
     return pipeline([
         node(
             func=evaluate_model,
-            inputs=["predictions", "test_labels"],
+            inputs=["predictions", "test_labels", "neptune_run"],
             outputs="evaluation_plot",
             name="node_model_evaluation"
             ),
